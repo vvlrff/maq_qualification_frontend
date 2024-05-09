@@ -20,7 +20,7 @@ jobs:
         username: ${{ secrets.USERNAME }}
         password: ${{ secrets.PASSWORD }}
         script: |
-          cd /home/map_qualification
+          cd /home/maq_qualification_frontend
           git pull
           docker compose down
           docker compose build
