@@ -10,7 +10,6 @@ filebeat.inputs:
   scan_frequency: 1s
   enabled: true
   paths:
-    - /logs/*
     - /var/log/nginx/*
   fields:
     service: multiple
