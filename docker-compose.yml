@@ -27,7 +27,6 @@ services:
     build:
       context: ./filebeat
     volumes:
-      - ./logs:/logs
       - ./frontend/nginx/logs:/var/log/nginx
     networks:
       - my-network
@@ -52,28 +51,28 @@ services:
     networks:
       - my-network
 
-  prometheus:
-    image: prom/prometheus
-    volumes:
-      - ./prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
-    ports:
-      - "9090:9090"
-    networks:
-      - my-network
+  # prometheus:
+  #   image: prom/prometheus
+  #   volumes:
+  #     - ./prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
+  #   ports:
+  #     - "9090:9090"
+  #   networks:
+  #     - my-network
 
-  grafana:
-    image: grafana/grafana
-    volumes:
-      - grafana_data:/var/lib/grafana
-      - ./grafana/provisioning:/etc/grafana/provisioning
-    environment:
-      - GF_SECURITY_ADMIN_PASSWORD=youradminpassword
-    ports:
-      - "3001:3000"
-    depends_on:
-      - prometheus
-    networks:
-      - my-network
+  # grafana:
+  #   image: grafana/grafana
+  #   volumes:
+  #     - grafana_data:/var/lib/grafana
+  #     - ./grafana/provisioning:/etc/grafana/provisioning
+  #   environment:
+  #     - GF_SECURITY_ADMIN_PASSWORD=youradminpassword
+  #   ports:
+  #     - "3001:3000"
+  #   depends_on:
+  #     - prometheus
+  #   networks:
+  #     - my-network
   
   frontend:
     build:
