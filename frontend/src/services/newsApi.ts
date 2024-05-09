@@ -5,7 +5,7 @@ import { INews } from "../models/INews";
 export const newsApi = createApi({
   reducerPath: "newsApi",
   baseQuery: fetchBaseQuery({
-    baseUrl: "https://api.aicrisismap.ru:8443",
+    baseUrl: "https://api.aicrisismap.ru",
     prepareHeaders: (headers) => {
       const token = JSON.parse(localStorage.getItem('user') || '{}')?.access_token;
       if (token) {
