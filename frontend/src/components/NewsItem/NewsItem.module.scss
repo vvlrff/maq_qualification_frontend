@@ -1,0 +1,94 @@
+// .item:hover {
+//     transform: scale(1.02);
+//     transition: transform 0.3s ease;
+// }
+
+// .item {
+//     position: relative;
+//     display: flex;
+//     // height: 30vh;
+//     border-radius: 10px;
+//     background-color: #6e6868;
+//     color: #ffffff;
+//     padding: 20px;
+//     margin: 20px;
+//     overflow: hidden;
+//     text-decoration: none;
+//     transition: transform 0.3s ease;
+
+//     .imgContainer {
+//         display: flex;
+//         justify-content: center;
+//         align-items: center;
+
+//         .img {
+//             height: 20vh;
+//         }
+//     }
+
+//     .textContainer {
+//         display: flex;
+//         flex-direction: column;
+//         margin-left: 10px;
+
+//         .title {
+//             font-weight: bold;
+//             font-size: 24px;
+//             text-decoration: none;
+//         }
+
+//         .text {
+//             text-decoration: none;
+//             font-size: 20px;
+//         }
+//     }
+
+//     .date {
+//         position: absolute;
+//         bottom: 0;
+//         right: 0;
+//         margin: 10px;
+//     }
+
+//     .link {
+//         margin: 20px;
+//         text-decoration: none;
+//     }
+// }
+
+
+.item {
+    display: flex;
+    flex-direction: column;
+    background-color: #fff; // Фоновый цвет
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1); // Тень для элемента
+    border-radius: 8px; // Скругление углов
+    margin: 10px 0;
+    padding: 20px; // Внутренний отступ
+    transition: transform 0.2s ease; // Анимация при наведении
+
+}
+
+.textContainer {
+    display: flex;
+    flex-direction: column;
+}
+
+.title {
+    font-size: 1.5rem; // Размер шрифта заголовка
+    font-weight: bold; // Жирность шрифта
+    color: #333; // Цвет текста
+    margin-bottom: 5px; // Отступ снизу
+}
+
+.text {
+    font-size: 1.2rem;
+    color: #666; // Цвет второстепенного текста
+    margin-bottom: 5px; // Отступ снизу
+}
+
+.date {
+    font-size: 0.9rem;
+    color: #888; // Цвет даты
+    margin-bottom: 10px; // Отступ снизу
+}

@@ -1,0 +1,81 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 20px;
+}
+
+.chartContainer {
+    width: 100%;
+    max-width: 400px; // Можете адаптировать под свои нужды
+    margin-top: 20px;
+}
+
+.buttonGroup {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+        background-color: #0056b3;
+    }
+
+    &:focus {
+        outline: none;
+    }
+}
+
+.textDataContainer {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); // 3 столбца равной ширины
+    gap: 20px; // Расстояние между элементами сетки
+    margin-top: 20px;
+    padding: 20px;
+}
+
+.textDataItem {
+    padding: 10px;
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+    text-align: center;
+    transition: background-color 0.3s;
+
+    a {
+        text-decoration: none;
+        color: #007bff;
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+
+    p {
+        margin-top: 10px;
+    }
+
+    // Обновление стиля при наведении
+    &:hover {
+        background-color: #e6e6e6; // Темнее при наведении
+    }
+}
+
+.highlighted {
+    background-color: #ffcccc; // Светло-розовый фон для выделения
+
+    // Обновление стиля при наведении для выделенных элементов
+    &:hover {
+        background-color: #f9a7a7; // Чуть темнее розовый при наведении
+    }
+}

@@ -1,0 +1,20 @@
+name: "app-filebeat"
+logging.metrics.enabled: false
+xpack.security.enabled: false
+xpack.monitoring.enabled: false
+setup.ilm.enabled: false
+setup.template.enabled: false
+
+filebeat.inputs:
+- type: log
+  scan_frequency: 1s
+  enabled: true
+  paths:
+    - /logs/*
+    - /var/log/nginx/*
+  fields:
+    service: multiple
+  fields_under_root: true
+
+output.logstash:
+  hosts: ["logstash:5044"]

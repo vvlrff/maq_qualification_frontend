@@ -1,0 +1,41 @@
+.container {
+    display: flex;
+    height: calc(100vh - 80px);
+    width: 100vw;
+
+    .sidebar {
+        width: 30vw;
+        max-height: calc(100vh - 80px);
+        display: flex;
+        flex-direction: column;
+        overflow-y: scroll;
+
+        .item {
+            background-color: #1c1b53;
+            border-radius: 5px;
+            margin: 10px;
+            padding: 10px;
+            color: #ffffff;
+            cursor: pointer;
+
+            .title {
+                font-weight: bold;
+                font-size: 20px;
+            }
+        }
+    }
+
+    .map {
+        width: 70vw;
+    }
+}
+
+.buttons {
+    position: fixed;
+    top: 20px; 
+    left: 50%; 
+    transform: translateX(-50%); 
+    display: flex;
+    gap: 10px; 
+    z-index: 100;
+}
