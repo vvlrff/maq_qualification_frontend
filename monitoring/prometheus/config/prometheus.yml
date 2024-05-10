@@ -51,7 +51,7 @@ scrape_configs:
     metrics_path: '/metrics'
     scheme: 'https'
     static_configs:
-      - targets: ['aicrisismap.ru']
+      - targets: ['frontend:443']
     tls_config:
       insecure_skip_verify: true
 
