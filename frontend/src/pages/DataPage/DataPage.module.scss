@@ -16,17 +16,17 @@
 }
 
 
-.container {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr); 
-    gap: 20px; 
-    margin: 20px 100px;
-    transition: transform 0.3s ease;
+// .container {
+//     display: grid;
+//     grid-template-columns: repeat(2, 1fr); 
+//     gap: 20px; 
+//     margin: 20px 100px;
+//     transition: transform 0.3s ease;
 
-    // &:hover {
-    //     transform: scale(1.05);
-    // }
-}
+//     // &:hover {
+//     //     transform: scale(1.05);
+//     // }
+// }
 
 
 .pagination {

@@ -73,7 +73,9 @@ const HomePage: React.FC = () => {
       )}
       {textData && (
         <div className={s.textDataContainer}>
-          {textData.slice(0, 30).map((item, index) => (
+          {textData
+          // .slice(0, 30)
+          .map((item, index) => (
             <div key={index} className={`${s.textDataItem} ${item.predicted_class === 1 ? s.highlighted : ''}`}>
               {item.title_ru != "" ? (
                 <a href={item.href} target="_blank" rel="noopener noreferrer">{item.title_ru}</a>

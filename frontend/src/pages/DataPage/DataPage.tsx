@@ -20,7 +20,7 @@ const DataPage: React.FC = () => {
     const [page, setPage] = useState<number>(1)
     const [searchQuery, setSearchQuery] = useState<string>("")
     const [isSearchActive, setIsSearchActive] = useState<boolean>(false)
-    const [lastSearch, setLastSearch] = useState<{ message: string } | null>(null);
+    const [_lastSearch, setLastSearch] = useState<{ message: string } | null>(null);
 
     const {
         data: news,
@@ -51,11 +51,11 @@ const DataPage: React.FC = () => {
         setIsSearchActive(true)
     }
 
-    const refetchSearchResults = () => {
-        if (lastSearch) {
-            search(lastSearch)
-        }
-    }
+    // const refetchSearchResults = () => {
+    //     if (lastSearch) {
+    //         search(lastSearch)
+    //     }
+    // }
 
     const handleReset = () => {
         setSearchQuery("")
@@ -85,10 +85,14 @@ const DataPage: React.FC = () => {
             </div>
             <div className={s.container}>
                 {!isSearchActive && news && news.results.map((item: INewsItem) => (
-                    <NewsItem news={item} key={item.doc_id} refetch={refetch} />
+                    <NewsItem news={item} key={item.doc_id} 
+                    // refetch={refetch} 
+                    />
                 ))}
                 {isSearchActive && searchNews && searchNews.results.map((item: INewsItem) => (
-                    <NewsItem news={item} key={item.doc_id} refetch={refetchSearchResults} />
+                    <NewsItem news={item} key={item.doc_id} 
+                    // refetch={refetchSearchResults} 
+                    />
                 ))}
             </div>
             {!isSearchActive && (
