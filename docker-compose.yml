@@ -62,8 +62,8 @@ services:
       - '--storage.tsdb.path=/prometheus'
       - '--web.console.libraries=/usr/share/prometheus/console_libraries'
       - '--web.console.templates=/usr/share/prometheus/consoles'
-    depends_on:
-      - cadvisor
+    # depends_on:
+    #   - cadvisor
     ports:
       - "9090:9090"
     logging:
@@ -80,29 +80,29 @@ services:
       - my-network
     
 
-  cadvisor:
-    build:
-      context: monitoring/cadvisor/
-    volumes:
-      - /:/rootfs:ro
-      - /var/run:/var/run:rw
-      - /sys:/sys:ro
-      - /var/lib/docker/:/var/lib/docker:ro
-      - /sys/fs/cgroup:/sys/fs/cgroup:ro
-    logging:
-      driver: json-file
-      options:
-        max-size: "4m"
-        max-file: "10"
-    ports:
-      - "8080:8080"    
-    environment:
-      - VIRTUAL_HOST=cadvisor.example.com
-      - VIRTUAL_PORT=8080
-      - LETSENCRYPT_HOST=cadvisor.example.com
-      - LETSENCRYPT_EMAIL=you@youremail.com
-    networks:
-      - my-network
+  # cadvisor:
+  #   build:
+  #     context: monitoring/cadvisor/
+  #   volumes:
+  #     - /:/rootfs:ro
+  #     - /var/run:/var/run:rw
+  #     - /sys:/sys:ro
+  #     - /var/lib/docker/:/var/lib/docker:ro
+  #     - /sys/fs/cgroup:/sys/fs/cgroup:ro
+  #   logging:
+  #     driver: json-file
+  #     options:
+  #       max-size: "4m"
+  #       max-file: "10"
+  #   ports:
+  #     - "8080:8080"    
+  #   environment:
+  #     - VIRTUAL_HOST=cadvisor.example.com
+  #     - VIRTUAL_PORT=8080
+  #     - LETSENCRYPT_HOST=cadvisor.example.com
+  #     - LETSENCRYPT_EMAIL=you@youremail.com
+  #   networks:
+  #     - my-network
 
   alertmanager:
     build:
