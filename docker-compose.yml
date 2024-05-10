@@ -189,8 +189,6 @@ volumes:
   grafana:
   prometheus:
 
-
-
 networks:
   my-network:
     driver: bridge
