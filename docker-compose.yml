@@ -51,29 +51,6 @@ services:
     networks:
       - my-network
 
-  # prometheus:
-  #   image: prom/prometheus
-  #   volumes:
-  #     - ./prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
-  #   ports:
-  #     - "9090:9090"
-  #   networks:
-  #     - my-network
-
-  # grafana:
-  #   image: grafana/grafana
-  #   volumes:
-  #     - grafana_data:/var/lib/grafana
-  #     - ./grafana/provisioning:/etc/grafana/provisioning
-  #   environment:
-  #     - GF_SECURITY_ADMIN_PASSWORD=youradminpassword
-  #   ports:
-  #     - "3001:3000"
-  #   depends_on:
-  #     - prometheus
-  #   networks:
-  #     - my-network
-
   prometheus:
     build:
       context: monitoring/prometheus/
@@ -87,6 +64,8 @@ services:
       - '--web.console.templates=/usr/share/prometheus/consoles'
     depends_on:
       - cadvisor
+    ports:
+      - "9090:9090"
     logging:
       driver: json-file
       options:
@@ -97,6 +76,9 @@ services:
       - VIRTUAL_PORT=9090
       - LETSENCRYPT_HOST=prometheus.example.com
       - LETSENCRYPT_EMAIL=you@youremail.com
+    networks:
+      - my-network
+    
 
   cadvisor:
     build:
@@ -111,11 +93,15 @@ services:
       options:
         max-size: "4m"
         max-file: "10"
+    ports:
+      - "8080:8080"    
     environment:
       - VIRTUAL_HOST=cadvisor.example.com
       - VIRTUAL_PORT=8080
       - LETSENCRYPT_HOST=cadvisor.example.com
       - LETSENCRYPT_EMAIL=you@youremail.com
+    networks:
+      - my-network
 
   alertmanager:
     build:
@@ -130,11 +116,15 @@ services:
       options:
         max-size: "4m"
         max-file: "10"
+    ports:
+      - "9093:9093"   
     environment:
       - VIRTUAL_HOST=alertmanager.example.com
       - VIRTUAL_PORT=9093
       - LETSENCRYPT_HOST=alertmanager.example.com
       - LETSENCRYPT_EMAIL=you@youremail.com
+    networks:
+      - my-network
 
   node-exporter:
     build:
@@ -153,6 +143,8 @@ services:
       options:
         max-size: "4m"
         max-file: "10"
+    networks:
+      - my-network
 
   grafana:
     build:
@@ -175,7 +167,8 @@ services:
       - VIRTUAL_PORT=3000
       - LETSENCRYPT_HOST=grafana.example.com
       - LETSENCRYPT_EMAIL=you@youremail.com
-  
+    networks:
+      - my-network  
   
   frontend:
     build:
@@ -200,3 +193,29 @@ volumes:
 networks:
   my-network:
     driver: bridge
+
+
+
+
+  # prometheus:
+  #   image: prom/prometheus
+  #   volumes:
+  #     - ./prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
+  #   ports:
+  #     - "9090:9090"
+  #   networks:
+  #     - my-network
+
+  # grafana:
+  #   image: grafana/grafana
+  #   volumes:
+  #     - grafana_data:/var/lib/grafana
+  #     - ./grafana/provisioning:/etc/grafana/provisioning
+  #   environment:
+  #     - GF_SECURITY_ADMIN_PASSWORD=youradminpassword
+  #   ports:
+  #     - "3001:3000"
+  #   depends_on:
+  #     - prometheus
+  #   networks:
+  #     - my-network
