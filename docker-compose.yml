@@ -87,7 +87,6 @@ services:
       - '--web.console.templates=/usr/share/prometheus/consoles'
     depends_on:
       - cadvisor
-    restart: always
     logging:
       driver: json-file
       options:
@@ -123,7 +122,6 @@ services:
       context: monitoring/alertmanager/
     volumes:
       - ./monitoring/alertmanager/config/:/etc/alertmanager/
-    restart: always
     command:
       - '--config.file=/etc/alertmanager/config.yml'
       - '--storage.path=/alertmanager'
@@ -150,7 +148,6 @@ services:
       - '--path.sysfs=/host/sys'
       - --collector.filesystem.ignored-mount-points
       - "^/(sys|proc|dev|host|etc|rootfs/var/lib/docker/containers|rootfs/var/lib/docker/overlay2|rootfs/run/docker/netns|rootfs/var/lib/docker/aufs)($$|/)"
-    restart: always
     logging:
       driver: json-file
       options:
@@ -168,7 +165,6 @@ services:
       - ./monitoring/grafana/config/provisioning/:/etc/grafana/provisioning/
     env_file:
       - ./monitoring/grafana/config/config.monitoring
-    restart: always
     logging:
       driver: json-file
       options:
