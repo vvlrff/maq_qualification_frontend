@@ -23,6 +23,5 @@ jobs:
           cd /home/maq_qualification_frontend
           git pull
           docker compose down
-          docker run --rm -v /home/maq_qualification_frontend/frontend/nginx/html:/usr/share/nginx/html busybox rm -rf /usr/share/nginx/html/*
           docker compose build
           docker compose up -d
