@@ -248,8 +248,8 @@ services:
 
 volumes:
   elasticsearch-data:
-  grafana:
-  prometheus:
+  grafana_data:
+  prometheus_data:
 
 networks:
   my-network:
