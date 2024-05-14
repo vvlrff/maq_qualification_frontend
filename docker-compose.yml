@@ -46,6 +46,7 @@ services:
     volumes:
       - ./logstash/pipelines/pipelines.yml:/usr/share/logstash/config/pipelines.yml:ro
       - ./logstash/pipelines:/usr/share/logstash/config/pipelines:ro
+      - ./logstash/GeoLite2-City.mmdb:/usr/share/logstash/GeoLite2-City.mmdb:ro
     depends_on:
       - elasticsearch
     networks:
