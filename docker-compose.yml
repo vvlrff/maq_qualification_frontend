@@ -52,34 +52,6 @@ services:
     networks:
       - my-network
 
-  # prometheus:
-  #   build:
-  #     context: monitoring/prometheus/
-  #   volumes:
-  #     - ./monitoring/prometheus/config/:/etc/prometheus/
-  #     - prometheus:/prometheus
-  #   command:
-  #     - '--config.file=/etc/prometheus/prometheus.yml'
-  #     - '--storage.tsdb.path=/prometheus'
-  #     - '--web.console.libraries=/usr/share/prometheus/console_libraries'
-  #     - '--web.console.templates=/usr/share/prometheus/consoles'
-  #   # depends_on:
-  #   #   - cadvisor
-  #   ports:
-  #     - "9090:9090"
-  #   logging:
-  #     driver: json-file
-  #     options:
-  #       max-size: "4m"
-  #       max-file: "10"
-  #   environment:
-  #     - VIRTUAL_HOST=prometheus.example.com
-  #     - VIRTUAL_PORT=9090
-  #     - LETSENCRYPT_HOST=prometheus.example.com
-  #     - LETSENCRYPT_EMAIL=you@youremail.com
-  #   networks:
-  #     - my-network
-
   alertmanager:
     image: prom/alertmanager:v0.26.0
     volumes:
@@ -166,73 +138,6 @@ services:
       logging_jobname: "containerlogs"
     networks:
       - my-network
-
-  # alertmanager:
-  #   build:
-  #     context: monitoring/alertmanager/
-  #   volumes:
-  #     - ./monitoring/alertmanager/config/:/etc/alertmanager/
-  #   command:
-  #     - '--config.file=/etc/alertmanager/config.yml'
-  #     - '--storage.path=/alertmanager'
-  #   logging:
-  #     driver: json-file
-  #     options:
-  #       max-size: "4m"
-  #       max-file: "10"
-  #   ports:
-  #     - "9093:9093"   
-  #   environment:
-  #     - VIRTUAL_HOST=alertmanager.example.com
-  #     - VIRTUAL_PORT=9093
-  #     - LETSENCRYPT_HOST=alertmanager.example.com
-  #     - LETSENCRYPT_EMAIL=you@youremail.com
-  #   networks:
-  #     - my-network
-
-  # node-exporter:
-  #   build:
-  #     context: monitoring/node-exporter/
-  #   volumes:
-  #     - "/proc:/host/proc:ro"
-  #     - "/sys:/host/sys:ro"
-  #     - "/:/rootfs:ro"
-  #   command:
-  #     - '--path.procfs=/host/proc'
-  #     - '--path.sysfs=/host/sys'
-  #     - --collector.filesystem.ignored-mount-points
-  #     - "^/(sys|proc|dev|host|etc|rootfs/var/lib/docker/containers|rootfs/var/lib/docker/overlay2|rootfs/run/docker/netns|rootfs/var/lib/docker/aufs)($$|/)"
-  #   logging:
-  #     driver: json-file
-  #     options:
-  #       max-size: "4m"
-  #       max-file: "10"
-  #   networks:
-  #     - my-network
-
-  # grafana:
-  #   build:
-  #     context: monitoring/grafana/
-  #   user: "104"
-  #   depends_on:
-  #     - prometheus
-  #   volumes:
-  #     - grafana:/var/lib/grafana
-  #     - ./monitoring/grafana/config/provisioning/:/etc/grafana/provisioning/
-  #   env_file:
-  #     - ./monitoring/grafana/config/config.monitoring
-  #   logging:
-  #     driver: json-file
-  #     options:
-  #       max-size: "4m"
-  #       max-file: "10"
-  #   environment:
-  #     - VIRTUAL_HOST=grafana.example.com
-  #     - VIRTUAL_PORT=3000
-  #     - LETSENCRYPT_HOST=grafana.example.com
-  #     - LETSENCRYPT_EMAIL=you@youremail.com
-  #   networks:
-  #     - my-network  
   
   frontend:
     build:
@@ -255,29 +160,3 @@ volumes:
 networks:
   my-network:
     driver: bridge
-
-
-
-
-  # prometheus:
-  #   image: prom/prometheus
-  #   volumes:
-  #     - ./prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
-  #   ports:
-  #     - "9090:9090"
-  #   networks:
-  #     - my-network
-
-  # grafana:
-  #   image: grafana/grafana
-  #   volumes:
-  #     - grafana_data:/var/lib/grafana
-  #     - ./grafana/provisioning:/etc/grafana/provisioning
-  #   environment:
-  #     - GF_SECURITY_ADMIN_PASSWORD=youradminpassword
-  #   ports:
-  #     - "3001:3000"
-  #   depends_on:
-  #     - prometheus
-  #   networks:
-  #     - my-network
