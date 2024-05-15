@@ -38,7 +38,7 @@ function Navbar() {
             </li>
 
             <li className={s.nav_text}>
-              <Link to='/map'>
+              <Link to='/map_day'>
                 <FaIcons.FaMap />
                 <span className={s.span}>Карта</span>
               </Link>

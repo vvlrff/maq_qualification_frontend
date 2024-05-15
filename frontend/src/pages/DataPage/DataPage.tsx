@@ -4,6 +4,7 @@ import s from './DataPage.module.scss'
 import NewsItem from '../../components/NewsItem/NewsItem'
 import { newsApi } from '../../services/newsApi'
 import { Pagination } from '@mui/material'
+import { Helmet } from 'react-helmet';
 
 export interface INewsItem {
     doc_id: string
@@ -67,6 +68,10 @@ const DataPage: React.FC = () => {
 
     return (
         <>
+            <Helmet>
+                <title>Поиск по новостям</title>
+            </Helmet>
+
             <div className={s.inputContainer}>
                 <TextField
                     className={s.searchInput}
@@ -85,12 +90,12 @@ const DataPage: React.FC = () => {
             </div>
             <div className={s.container}>
                 {!isSearchActive && news && news.results.map((item: INewsItem) => (
-                    <NewsItem news={item} key={item.doc_id} 
+                    <NewsItem news={item} key={item.doc_id}
                     // refetch={refetch} 
                     />
                 ))}
                 {isSearchActive && searchNews && searchNews.results.map((item: INewsItem) => (
-                    <NewsItem news={item} key={item.doc_id} 
+                    <NewsItem news={item} key={item.doc_id}
                     // refetch={refetchSearchResults} 
                     />
                 ))}

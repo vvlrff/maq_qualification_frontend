@@ -3,7 +3,7 @@ import Layout from "./components/Layout/Layout";
 import HomePage from './pages/HomePage/HomePage';
 import DataPage from './pages/DataPage/DataPage';
 import MapPage from './pages/MapPage/MapPage';
-import IdPage from './pages/IdPage/IdPage';
+// import IdPage from './pages/IdPage/IdPage';
 import NotFoundPage from './pages/NotFoundPage/NotFoundPage';
 import MapPageDay from './pages/MapPageDay/MapPageDay';
 import MapPageWeek from './pages/MapPageWeek/MapPageWeek';
@@ -16,7 +16,7 @@ const router = createBrowserRouter(createRoutesFromElements(
     <Route path='map_day' element={<MapPageDay />} />
     <Route path='map_week' element={<MapPageWeek />} />
     <Route path='data' element={<DataPage />} />
-    <Route path='data/:id' element={<IdPage />} />
+    {/* <Route path='data/:id' element={<IdPage />} /> */}
     <Route path='*' element={<NotFoundPage />} />
   </Route>
 ))

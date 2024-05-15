@@ -1,6 +1,14 @@
+import { Helmet } from "react-helmet"
+
 const NotFoundPage = () => {
   return (
-    <div>Страница не найдена</div>
+    <>
+      <Helmet>
+        <title>Карта за неделю</title>
+      </Helmet>
+      <div>Страница не найдена</div>
+    </>
+
   )
 }
 
