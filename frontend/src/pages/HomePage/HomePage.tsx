@@ -67,7 +67,6 @@ const HomePage: React.FC = () => {
             </Helmet>
 
             <div className={s.container}>
-                ТЕСТТТТТ
                 <div className={s.buttonGroup}>
                     <button onClick={() => updateGraphAndText(dataAllStatistics)}>Все время</button>
                     <button onClick={() => updateGraphAndText(dataLastWeek, dataLastWeek?.data)}>Последняя неделя</button>
