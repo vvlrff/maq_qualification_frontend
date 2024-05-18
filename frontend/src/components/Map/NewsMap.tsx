@@ -51,7 +51,7 @@ const NewsMap: React.FC<NewsMapProps> = ({ countries }) => {
       center={[45, 0]}
     >
       <GeoJSON
-        style={style} // Применяем функцию стиля здесь
+        style={style}
         data={countries}
         onEachFeature={onEachCountry}
       />

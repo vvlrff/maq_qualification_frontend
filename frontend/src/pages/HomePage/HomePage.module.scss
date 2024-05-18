@@ -8,7 +8,7 @@
 
 .chartContainer {
     width: 100%;
-    max-width: 400px; // Можете адаптировать под свои нужды
+    max-width: 400px; 
     margin-top: 20px;
 }
 
@@ -38,8 +38,8 @@ button {
 
 .textDataContainer {
     display: grid;
-    grid-template-columns: repeat(2, 1fr); // 3 столбца равной ширины
-    gap: 20px; // Расстояние между элементами сетки
+    grid-template-columns: repeat(2, 1fr); 
+    gap: 20px; 
     margin-top: 20px;
     padding: 20px;
 }
@@ -65,17 +65,15 @@ button {
         margin-top: 10px;
     }
 
-    // Обновление стиля при наведении
     &:hover {
-        background-color: #e6e6e6; // Темнее при наведении
+        background-color: #e6e6e6;
     }
 }
 
 .highlighted {
-    background-color: #ffcccc; // Светло-розовый фон для выделения
+    background-color: #ffcccc; 
 
-    // Обновление стиля при наведении для выделенных элементов
     &:hover {
-        background-color: #f9a7a7; // Чуть темнее розовый при наведении
+        background-color: #f9a7a7;
     }
 }
