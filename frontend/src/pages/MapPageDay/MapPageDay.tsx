@@ -57,39 +57,8 @@ const MapPageDay: React.FC = () => {
             <NewsCard item={selectedItem} onClose={handleCloseCard} />
           </div>
         )}
-      </div><div className={s.container}>
-        <div className={s.buttons}>
-          <button onClick={() => navigate("/map_week")}>Неделя</button>
-          <button onClick={() => navigate("/map")}>Все время</button>
-        </div>
-
-        <div className={s.sidebar}>
-          {newsGuardianLastDay ? (
-            <>
-              {newsGuardianLastDay.result.map((item: INews) => {
-                return (
-                  <div key={item.id} className={s.item} onClick={() => handleOpenCard(item)}>
-                    <div className={s.title}>{item.title_ru}</div>
-                    <div>Дата: {dayjs(item.date).format('DD-MM-YYYY')}</div>
-                  </div>
-                );
-              })}
-            </>
-          ) : null}
-        </div>
-
-        <div className={s.map}>
-          <MyMap data={newsGuardianLastDay} />
-        </div>
-
-        {selectedItem && (
-          <div className={s.overlay}>
-            <NewsCard item={selectedItem} onClose={handleCloseCard} />
-          </div>
-        )}
       </div>
     </>
-
   );
 };
 
